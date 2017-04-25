@@ -23,9 +23,43 @@
                         th:value="${employer.id}"
                         th:text="${employer.value}"></option>
             </select>
+            <div th:errors="*{employerId}"></div>
         </div>
 
-        <!-- TODO #5 - Create <select> dropdowns for other job fields -->
+        <!-- TODO #5 - Create <select> dropdowns for other job fields-->
+        <!--//rinse and repeat for employerId, employers - locations, coreCompetencies, positionTypes-->
+        <!-- added errors to each-->
+
+        <div class="form-group">
+            <label th:for="locationId">Location</label>
+            <select th:field="*{locationId}">
+                <option th:each="location : *{locations}"
+                        th:value="${location.id}"
+                        th:text="${location.value}"></option>
+            </select>
+            <div th:errors="*{locationId}"></div>
+        </div>
+
+        <div class="form-group">
+            <label th:for="coreCompetencyId">Core Competency</label>
+            <select th:field="*{coreCompetencyId}">
+                <option th:each="coreCompetency : *{coreCompetencies}"
+                        th:value="${coreCompetency.id}"
+                        th:text="${coreCompetency.value}"></option>
+            </select>
+            <div th:errors="*{coreCompetencyId}"></div>
+        </div>
+
+        <div class="form-group">
+            <label th:for="positionTypeId">Position Types</label>
+            <select th:field="*{positionTypeId}">
+                <option th:each="positionType : *{positionTypes}"
+                        th:value="${positionType.id}"
+                        th:text="${positionType.value}"></option>
+            </select>
+            <div th:errors="*{positionTypeId}"></div>
+        </div>
+
 
         <input type="submit" value="Add Job" />
     </form>
