@@ -19,13 +19,28 @@ public class JobForm {
     @Size(min=1, message = "Name may not be empty")
     private String name;
 
-    @NotNull
+    @NotNull (message = "Employer may not be empty")
     private int employerId;
 
+    @NotNull (message = "Location may not be empty")
+    private int locationId;
+
+    @NotNull (message = "Core Competency may not be empty")
+    private int coreCompetencyId;
+
+    @NotNull (message = "Position Type may not be empty")
+    private int positionTypeId;
+
     /*
+        Included other fields needed to create a job,
+            //ref JobData.java -- employer, location, coreCompetency, positionType
+            // + JobFieldData.java -- int values
+        with correct validation attributes and display names.
+            //@NotNulls -- employerId, locationId, coreCompetencyId, positionTypeId
         TODO #3 - Included other fields needed to create a job,
         with correct validation attributes and display names.
         Don't forget to add getters and setters
+            //see below/end for getters/setters (rghtclk "Generate" // Alt+Insert)
      */
 
     private ArrayList<Employer> employers;
@@ -39,10 +54,13 @@ public class JobForm {
 
         /*
             TODO #4 - populate the other ArrayList collections needed in the view
+                // rinse and repeat for employers -- locations, coreCompetencies, positionTypes
         */
 
         employers = jobData.getEmployers().findAll();
-
+        locations = jobData.getLocations().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
     }
 
     public String getName() {
@@ -60,6 +78,32 @@ public class JobForm {
     public void setEmployerId(int employerId) {
         this.employerId = employerId;
     }
+
+    //getters/setters for #3
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
+    public int getCoreCompetencyId() {
+        return coreCompetencyId;
+    }
+
+    public void setCoreCompetencyId(int coreCompetencyId) {
+        this.coreCompetencyId = coreCompetencyId;
+    }
+
+    public int getPositionTypeId() {
+        return positionTypeId;
+    }
+
+    public void setPositionTypeId(int positionTypeId) {
+        this.positionTypeId = positionTypeId;
+    }
+    // END getters/setters for #3
 
     public ArrayList<Employer> getEmployers() {
         return employers;
